@@ -65,7 +65,7 @@ return {
         enabled = true,
       },
       filtered_items = {
-        hide_dotfiles = true,
+        hide_dotfiles = false,
         hide_gitignore = true,
         hide_by_name = {
           "node_modules",
