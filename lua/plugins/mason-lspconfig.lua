@@ -8,5 +8,6 @@ return {
       "ruby_lsp",
       "prettierd",
       "rubocop",
-  }
+    },
+  },
 }
