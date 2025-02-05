@@ -62,17 +62,11 @@ require("mason-lspconfig").setup({
     end,
 
     ruby_lsp = function()
-      require("lspconfig").ruby_lsp.setup({
-        mason = false,
-        cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
-      })
+      require("lspconfig").ruby_lsp.setup({})
     end,
 
     rubocop = function()
-      require("lspconfig").rubocop.setup({
-        mason = false,
-        cmd = { vim.fn.expand("~/.rbenv/shims/rubocop"), "--lsp" },
-      })
+      require("lspconfig").rubocop.setup({})
     end,
   },
 })
@@ -95,7 +89,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("i", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
     vim.keymap.set("n", "<leader>cn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+    vim.keymap.set({ "n", "x" }, "<leader>cc", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
   end,
 })
 
