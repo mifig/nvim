@@ -1,5 +1,6 @@
 -- This should be executed before you configure any language server
 local lspconfig_defaults = require("lspconfig").util.default_config
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -36,6 +37,7 @@ require("mason-lspconfig").setup({
             },
           },
         },
+        capabilities = capabilities,
       })
     end,
 
@@ -46,27 +48,28 @@ require("mason-lspconfig").setup({
             disableSuggestions = true,
           },
         },
+        capabilities = capabilities,
       })
     end,
 
     eslint = function()
-      require("lspconfig").eslint.setup({})
+      require("lspconfig").eslint.setup({ capabilities = capabilities })
     end,
 
     jsonls = function()
-      require("lspconfig").jsonls.setup({})
+      require("lspconfig").jsonls.setup({ capabilities = capabilities })
     end,
 
     cssls = function()
-      require("lspconfig").cssls.setup({})
+      require("lspconfig").cssls.setup({ capabilities = capabilities })
     end,
 
     ruby_lsp = function()
-      require("lspconfig").ruby_lsp.setup({})
+      require("lspconfig").ruby_lsp.setup({ capabilities = capabilities })
     end,
 
     rubocop = function()
-      require("lspconfig").rubocop.setup({})
+      require("lspconfig").rubocop.setup({ capabilities = capabilities })
     end,
   },
 })
@@ -94,16 +97,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Diganostics are not exclusive to LSP servers so these can be flobal keybings
-vim.keymap.set(
-  "n",
-  "<leader>cd",
-  "<cmd>lua vim.diagnostic.open_float()<cr>",
-  { desc = "Open diagnostics" }
-)
+vim.keymap.set("n", "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Open diagnostics" })
 vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Next diagnostic" })
-vim.keymap.set(
-  "n",
-  "]d",
-  "<cmd>lua vim.diagnostic.goto_prev()<cr>",
-  { desc = "Previous diagnostic" }
-)
+vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Previous diagnostic" })
