@@ -10,9 +10,6 @@ require("config.lazy")
 -- Colorscheme
 vim.cmd.colorscheme("catppuccin")
 
--- Load misc configurations (not related to any particular package)
-require("mifig.misc")
-
 -- Autocomplete setup
 require("mifig.cmp")
 
