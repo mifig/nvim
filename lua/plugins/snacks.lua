@@ -1,5 +1,6 @@
 return {
   "folke/snacks.nvim",
+  enabled = false,
   init = function()
     _G.Snacks = require("snacks")
   end,
