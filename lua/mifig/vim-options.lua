@@ -1,25 +1,82 @@
-local opt = vim.opt
+vim.g.netrw_browse_split = 0
+vim.g.netrw_winsize = 25
 
-opt.relativenumber = true
-opt.number = true
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.softtabstop = 2
-opt.autoindent = true
+vim.opt.cursorline = true -- Enable highlighting of the current line
 
--- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+-- Show line numbers and set them to relative
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
--- cursor line
-opt.cursorline = true -- highlight the current cursor line
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2 -- Size of an indent
+vim.opt.showmode = false -- Do not show mode in the command line since we have lualine
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.list = true -- Show some invisible characters (tabs, etc)
+vim.opt.smartindent = false -- neovim smart indentation
+vim.opt.wrap = false -- do not wrap long lines
 
--- appearance
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
 
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
--- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+
+-- If this many ms nothing is typed the swap file will be written to disk
+vim.opt.updatetime = 250
+
+-- How much time neovim will wait for a mapped sequence to complete
+vim.opt.timeoutlen = 250
+
+-- Ignore these files when expanding wildcards
+vim.opt.wildignore:append({ "node_modules/**", "dist/**", "build/**" })
+
+-- Add a color column at the 100th column
+vim.opt.colorcolumn = { 100 }
+
+-- Use ripgrep instead of grep for faster grepping
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- Set default window border of all floating windows
+-- vim.opt.winborder = "rounded"
+
+-- Set the sign column to always be visible
+vim.opt.signcolumn = "yes"
+
+-- Disable having a new line as comment if coming from a comment line
+vim.cmd([[autocmd FileType * set formatoptions-=cro]])
+
+-- Cool fold stuff
+-- vim.opt.foldmethod = "expr"
+--vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+--vim.opt.foldcolumn = "0"
+--vim.opt.foldtext = ""
+--vim.opt.foldlevel = 99
+--vim.opt.foldlevelstart = 10
+--vim.opt.foldnestmax = 4
+
+-- Diagnostics settings
+--vim.diagnostic.config({
+--  signs = {
+--    text = {
+--      [vim.diagnostic.severity.ERROR] = " ",
+--      [vim.diagnostic.severity.WARN] = " ",
+--      [vim.diagnostic.severity.INFO] = " ",
+--      [vim.diagnostic.severity.HINT] = "󰌵",
+--    },
+--  },
+--})
+

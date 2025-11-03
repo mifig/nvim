@@ -4,7 +4,7 @@ return {
   opts = {
     extensions = { "fugitive", "lazy", "trouble", "neo-tree", "mason", "quickfix" },
     options = {
-      theme = "dracula",
+      theme = "auto",
       icons_enabled = true,
       component_separators = { left = "󰿟", right = "󰿟" },
       section_separators = { left = "", right = "" },
