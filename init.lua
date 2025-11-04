@@ -6,6 +6,7 @@ require("mifig.vim-options")
 
 -- Load lazyvim config:
 require("config.lazy")
+require("config.bufferline")
 
 -- Colorscheme
 vim.cmd.colorscheme("catppuccin")
