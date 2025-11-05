@@ -74,7 +74,12 @@ return {
       end, { desc = "Find file" })
 
       vim.keymap.set("n", "<leader>fg", function()
-        telescope.live_grep()
+        local cached_pickers = require("telescope.state").get_global_key("cached_pickers")
+        if cached_pickers == nil or vim.tbl_isempty(cached_pickers) then
+          telescope.live_grep()
+        else
+          telescope.resume()
+        end
       end, { desc = "Grep in files" })
 
       vim.keymap.set("n", "<leader>fb", function()
